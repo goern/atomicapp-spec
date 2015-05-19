@@ -1,0 +1,17 @@
+apiVersion: v1beta1
+id: mariadb
+kind: Pod
+desiredState:
+  manifest:
+    version: v1beta1
+    id: mariadb
+    containers:
+      - name: mariadb
+        image: goern/mariadb55-centos7
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: yourpassword
+        ports:
+          - containerPort: 3306
+labels:
+  name: mariadb

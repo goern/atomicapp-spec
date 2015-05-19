@@ -1,0 +1,17 @@
+---
+specversion: 0.0.1-alpha
+id: mariadb-atomicapp
+
+metadata:
+  name: MariaDB 5.5 Atomicapp
+  appversion: 5.5.41
+  description: This is MariaDB
+graph:
+  mariadb-atomicapp:
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/mariadb-pod.yaml
+        - file://artifacts/kubernetes/mariadb-service.yaml
+      openshift:
+        - file://artifacts/openshift3/mariadb.json
+

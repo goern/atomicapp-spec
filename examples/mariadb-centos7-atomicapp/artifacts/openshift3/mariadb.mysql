@@ -1,0 +1,61 @@
+{
+  "kind": "Config",
+  "apiVersion": "v1beta1",
+  "id": "mariadb",
+  "items":[
+    {
+      "kind": "Service",
+      "apiVersion": "v1beta2",
+      "id": "mariadb-master",
+      "portalIP": "None",
+      "labels": {
+        "name": "mariadb-master"
+      },
+      "port": 3306,
+      "selector": {
+        "name": "mariadb-master"
+      }
+    },
+    {
+      "kind": "ReplicationController",
+      "apiVersion": "v1beta2",
+      "id": "mariadb-master",
+      "metadata": {
+        "name": "mariadb-master",
+        "labels": {
+          "name":"mariadb-master"
+        }
+      },
+      "desiredState": {
+        "replicas": 1,
+        "replicaSelector": {
+          "name": "mariadb-master"
+        },
+        "podTemplate": {
+          "labels": {
+            "name": "mariadb-master"
+          },
+          "desiredState": {
+            "manifest": {
+              "containers":[
+                {
+                  "name":  "server",
+                  "image": "goern/mariadb55-centos7",
+                  "env": [
+                    { "name": "MYSQL_ROOT_PASSWORD", "value": "master" },
+                    { "name": "MYSQL_DATABASE", "value": "userdb" }
+                  ],
+                  "ports":[
+                    {
+                      "containerPort": 3306
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -9,8 +9,6 @@ metadata:
 graph:
   aggregated-mysql-atomicapp:
     source: docker://goern/mysql-centos7-atomicapp
-  aggregated-skydns-atomicapp:
-    source: docker://goern/skydns-atomicapp
   wordpress:
     artifacts:
       kubernetes:
