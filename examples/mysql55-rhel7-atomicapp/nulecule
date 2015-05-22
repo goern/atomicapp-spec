@@ -1,0 +1,17 @@
+---
+specversion: 0.0.1-alpha
+id: mysql-atomicapp
+
+metadata:
+  name: MySQL 5.5 Atomicapp
+  appversion: 5.5.41
+  description: This is MySQL, provided by OpenShift community 
+graph:
+  mysql-atomicapp:
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/mysql-pod.yaml
+        - file://artifacts/kubernetes/mysql-service.yaml
+      openshift:
+        - file://artifacts/openshift3/mysql.json
+

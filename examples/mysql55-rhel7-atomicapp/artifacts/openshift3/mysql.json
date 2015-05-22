@@ -1,0 +1,61 @@
+{
+  "kind": "Config",
+  "apiVersion": "v1beta1",
+  "id": "mysql",
+  "items":[
+    {
+      "kind": "Service",
+      "apiVersion": "v1beta2",
+      "id": "mysql-master",
+      "portalIP": "None",
+      "labels": {
+        "name": "mysql-master"
+      },
+      "port": 3306,
+      "selector": {
+        "name": "mysql-master"
+      }
+    },
+    {
+      "kind": "ReplicationController",
+      "apiVersion": "v1beta2",
+      "id": "mysql-master",
+      "metadata": {
+        "name": "mysql-master",
+        "labels": {
+          "name":"mysql-master"
+        }
+      },
+      "desiredState": {
+        "replicas": 1,
+        "replicaSelector": {
+          "name": "mysql-master"
+        },
+        "podTemplate": {
+          "labels": {
+            "name": "mysql-master"
+          },
+          "desiredState": {
+            "manifest": {
+              "containers":[
+                {
+                  "name":  "server",
+                  "image": "openshift/mysql-55-rhel7",
+                  "env": [
+                    { "name": "MYSQL_ROOT_PASSWORD", "value": "wordpress" },
+                    { "name": "MYSQL_DATABASE", "value": "wordpress" }
+                  ],
+                  "ports":[
+                    {
+                      "containerPort": 3306
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
