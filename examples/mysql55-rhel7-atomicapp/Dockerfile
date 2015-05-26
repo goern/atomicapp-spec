@@ -1,8 +1,8 @@
-FROM cgoern/atomicapp-rhel7:0.0.1
+FROM cgoern/atomicapp-rhel7:0.1.0
 
 MAINTAINER Christoph Görn <goern@redhat.com>
 
-LABEL io.projectatomic.nulecule.specversion 0.0.1-alpha
+LABEL io.projectatomic.nulecule.specversion 0.0.2
 
 LABEL Build docker build --rm --tag cgoern/mysql55-rhel7-atomicapp .
 
