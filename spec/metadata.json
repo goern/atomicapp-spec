@@ -21,7 +21,7 @@
             "default": "null"
         },
         "license": {
-            "$ref": "file:license.json"
+            "$ref": "https://raw.githubusercontent.com/projectatomic/nulecule/release-0.0.2/spec/0.0.2/license.json"
         }
     }
 }
